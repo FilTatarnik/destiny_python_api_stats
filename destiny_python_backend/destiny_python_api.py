@@ -1,10 +1,9 @@
 import requests
 import pprint as pprint
 import json
-import api_key
+import config
 
-#Bungie API key
-key = 'bfd43c714dc5496abdd323430e7886da'
+
     
 def search_destiny_player():
     #----------------Asking user for Acc name via input()----------------
@@ -21,7 +20,7 @@ def search_destiny_player():
         #----------------Parsing through JSON object from Bungie API----------------
         #----------------Search For Player----------------
         # https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/...
-        search_player = requests.get(f'https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/3/{search_destiny_player_input}', headers={"X-API-KEY": key})
+        search_player = requests.get(f'https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/3/{search_destiny_player_input}', headers={"X-API-KEY": config.api_key})
         
         #----------------Display Name----------------
         display_name = search_player.json()['Response'][0]['displayName']
@@ -29,7 +28,7 @@ def search_destiny_player():
         membership_id = search_player.json()['Response'][0]['membershipId']
         
     #----------------Get Profile...Gets Bungie Account Info----------------
-        get_profile = requests.get(f'https://www.bungie.net/Platform/Destiny2/3/Profile/{membership_id}/?components=100', headers={"X-API-KEY": key})
+        get_profile = requests.get(f'https://www.bungie.net/Platform/Destiny2/3/Profile/{membership_id}/?components=100', headers={"X-API-KEY": config.api_key})
         #----------------Get Character Ids..Classes..Titan..Warlock..Hunter----------------
         character_ids = get_profile.json()['Response']['profile']['data']['characterIds']
         
@@ -40,7 +39,7 @@ def search_destiny_player():
         
     #----------------Get Destiny PVP Stats----------------
         #https://www.bungie.net/Platform/Destiny2/3/Account/4611686018467419826/Stats/
-        get_stats = requests.get(f'https://www.bungie.net/Platform/Destiny2/3/Account/{membership_id}/Stats/', headers={"X-API-KEY": key})
+        get_stats = requests.get(f'https://www.bungie.net/Platform/Destiny2/3/Account/{membership_id}/Stats/', headers={"X-API-KEY": config.api_key})
     #----------------PVP Stats----------------
         #----------------Write a function that loops through the json object until the allTime and then print them out after that? I'm not sure. I just know that this what's going on below isn't efficient.----------------
         #----------------Total Kills----------------
