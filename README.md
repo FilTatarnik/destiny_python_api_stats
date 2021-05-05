@@ -23,6 +23,6 @@
 17. Also, if your name is generic like, 'Leo'. Then it might not be able to bring up your stats becuase there are many 'Leo's out there. 
 18. ^there is an endpoint in the API that allows Users to get back an Array of Accounts from a SearchQuery. That's what I'm going to implement next and allow Users to Select their Account based off of their Steam Avatar or something
 19. Hit enter
-#What to expect
+# What to expect
 <img src='https://i.imgur.com/hrM9vT9.gif'>
 20. Tada! Stats
